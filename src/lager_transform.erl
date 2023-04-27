@@ -25,9 +25,12 @@
 
 -include("lager.hrl").
 
--export([parse_transform/2]).
+-export([parse_transform_info/0, parse_transform/2]).
 
 %% @private
+parse_transform_info() ->
+    #{'error_location' => 'line'}.
+
 parse_transform(AST, Options) ->
     TruncSize = proplists:get_value(lager_truncation_size, Options, ?DEFAULT_TRUNCATION),
     Enable = proplists:get_value(lager_print_records_flag, Options, true),
